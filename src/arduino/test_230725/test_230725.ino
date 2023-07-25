@@ -208,4 +208,5 @@ void loop()
   // Sampling Timer
   while(micros() - sampling_timer < 4000); //
   sampling_timer = micros(); //Reset the sampling timer
+  forward(255, 255, 255, 255);
 }
