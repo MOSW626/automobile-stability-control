@@ -53,6 +53,7 @@ void setup()
 // ================================================================
 // ===                       MOTOR CONTROL                      ===
 // ================================================================
+/*
 void forward(int Va, int Vb, int Vc, int Vd)
 {
   analogWrite(ENA, Va);
@@ -86,6 +87,7 @@ void backward(int Va, int Vb, int Vc, int Vd)
   digitalWrite(IND1, LOW);
   digitalWrite(IND2, HIGH);
 }
+*/
 
 void FWard_Fwheel(int Va, int Vb)
 {
