@@ -89,7 +89,7 @@ void backward(int Va, int Vb, int Vc, int Vd)
 }
 */
 
-void FWard_Fwheel(int Va, int Vb)
+/*void FWard_Fwheel(int Va, int Vb)
 {
   analogWrite(ENA, Va);
   analogWrite(ENB, Vb);
@@ -143,6 +143,72 @@ void BackwardFW_ForwardBW(int Va, int Vb, int Vc, int Vd);
   digitalWrite(INC2, HIGH);
   digitalWrite(IND1, HIGH);
   digitalWrite(IND2, LOW);
+}*/
+
+void FW_forward(int Va, int Vb)
+{
+  analogWrite(ENA, Va);
+  analogWrite(ENB, Vb);
+
+  digitalWrite(INA1, LOW);
+  digitalWrite(INA2, HIGH);
+  digitalWrite(INB1, HIGH);
+  digitalWrite(INB2, LOW);
+}
+
+void FW_stop(int Va, int Vb)
+{
+  analogWrite(ENA, Va);
+  analogWrite(ENB, Vb);
+
+  digitalWrite(INA1, LOW);
+  digitalWrite(INA2, LOW);
+  digitalWrite(INB1, LOW);
+  digitalWrite(INB2, LOW);
+}
+
+void FW_backward(int Va, int Vb)
+{
+  analogWrite(ENA, Va);
+  analogWrite(ENB, Vb);
+
+  digitalWrite(INA1, HIGH);
+  digitalWrite(INA2, LOW);
+  digitalWrite(INB1, LOW);
+  digitalWrite(INB2, HIGH);
+}
+
+void BW_forward(int Vc, int Vd)
+{
+  analogWrite(ENC, Vc);
+  analogWrite(END, Vd);
+
+  digitalWrite(INC1, LOW);
+  digitalWrite(INC2, HIGH);
+  digitalWrite(IND1, HIGH);
+  digitalWrite(IND2, LOW);
+}
+
+void BW_STOP(int Vc, int Vd)
+{
+  analogWrite(ENC, Vc);
+  analogWrite(END, Vd);
+
+  digitalWrite(INC1, LOW);
+  digitalWrite(INC2, LOW);
+  digitalWrite(IND1, LOW);
+  digitalWrite(IND2, LOW);
+}
+
+void BW_backward(int Vc, int Vd)
+{
+  analogWrite(ENC, Vc);
+  analogWrite(END, Vd);
+
+  digitalWrite(INC1, HIGH);
+  digitalWrite(INC2, LOW);
+  digitalWrite(IND1, LOW);
+  digitalWrite(IND2, HIGH);
 }
 
 void loop()
