@@ -1,4 +1,4 @@
-#include<Wire.h>
+#include <Wire.h>
 
 #define MPU6050_AXOFFSET 138
 #define MPU6050_AYOFFSET 9
@@ -34,7 +34,7 @@ void loop(){
   Tmp=Wire.read()<<8|Wire.read(); // 0x41 (TEMP_OUT_H) & 0x42 (TEMP_OUT_L)
   GyX=Wire.read()<<8|Wire.read(); // 0x43 (GYRO_XOUT_H) & 0x44 (GYRO_XOUT_L)
   GyY=Wire.read()<<8|Wire.read(); // 0x45 (GYRO_YOUT_H) & 0x46 (GYRO_YOUT_L)
-  GyZ=Wire.read()<<8|Wire.read(); // 0x47 (GYRO_ZOUT_H) & 0x48 (GYRO_ZOUT_L)  
+  GyZ=Wire.read()<<8|Wire.read(); // 0x47 (GYRO_ZOUT_H) & 0x48 (GYRO_ZOUT_L)
 
   // Raw data of accelerometer corrected by offset value
   AcX -= MPU6050_AXOFFSET;
@@ -63,7 +63,7 @@ void loop(){
   // Print value of Pitch, Roll & Yaw reflected Complementary Filter
   Serial.print(" | angle_pitch = "); Serial.print(angle_pitch);
   Serial.print(" | angle_roll = "); Serial.println(angle_roll);
-  
+
   // Sampling Timer
   while(micros() - sampling_timer < 4000); //
   sampling_timer = micros(); //Reset the sampling timer

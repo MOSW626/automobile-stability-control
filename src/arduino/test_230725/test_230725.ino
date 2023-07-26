@@ -210,5 +210,4 @@ void loop()
  // sampling_timer = micros(); //Reset the sampling timer
   Serial.println("forward");
   forward(255, 255, 255, 255);
-  delay(1000);
 }
