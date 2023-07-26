@@ -23,6 +23,7 @@ def download_data():
                 data = data.decode('utf-8', errors='ignore').strip()
                 if data:
                     timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')
+                    print(f"Timestamp: {timestamp}, Data: {data}")
                     csv_writer.writerow([timestamp, data])
         except KeyboardInterrupt:
             print("Download stopped by user.")
