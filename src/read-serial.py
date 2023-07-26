@@ -3,7 +3,6 @@ import time
 import csv
 from datetime import datetime
 import serial
-#test
 
 arduino_port = 'com11'
 arduino_rate = 115200
