@@ -13,13 +13,14 @@ def download_data():
     now = datetime.now()
     file_name = os.path.join(os.path.dirname(os.path.abspath(__file__)), f"{now.strftime('%Y-%m-%d_%H-%M-%S')}.csv")
 
-    with open(file_name, 'w', newline='') as csvfile:
+    with open(file_name, 'w', newline='', encoding='utf-8') as csvfile:
         csv_writer = csv.writer(csvfile)
         csv_writer.writerow(['Timestamp', 'Data'])
 
         try:
             while True:
-                data = arduino.readline().decode().strip()
+                data = arduino.readline()
+                data = data.decode('utf-8', errors='ignore').strip()
                 if data:
                     timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')
                     csv_writer.writerow([timestamp, data])
