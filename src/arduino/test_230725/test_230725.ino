@@ -200,13 +200,15 @@ void backward(int Va, int Vb, int Vc, int Vd)
 
 void loop()
 {
-  raw_data_IMU();
-  calculate_YPR();
-  // Print value of Pitch, Roll & Yaw reflected Complementary Filter
-  Serial.print(" | angle_pitch = "); Serial.print(angle_pitch);
-  Serial.print(" | angle_roll = "); Serial.println(angle_roll);
-  // Sampling Timer
-  while(micros() - sampling_timer < 4000); //
-  sampling_timer = micros(); //Reset the sampling timer
+ // raw_data_IMU();
+ // calculate_YPR();
+ // // Print value of Pitch, Roll & Yaw reflected Complementary Filter
+ // Serial.print(" | angle_pitch = "); Serial.print(angle_pitch);
+ // Serial.print(" | angle_roll = "); Serial.println(angle_roll);
+ // // Sampling Timer
+ // while(micros() - sampling_timer < 4000); //
+ // sampling_timer = micros(); //Reset the sampling timer
+  Serial.println("forward");
   forward(255, 255, 255, 255);
+  delay(1000);
 }
