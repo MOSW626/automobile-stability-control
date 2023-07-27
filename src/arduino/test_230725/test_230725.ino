@@ -189,7 +189,7 @@ void BW_forward(int Vc, int Vd)
   digitalWrite(IND2, LOW);
 }
 
-void BW_STOP(int Vc, int Vd)
+void BW_stop(int Vc, int Vd)
 {
   analogWrite(ENC, Vc);
   analogWrite(END, Vd);
@@ -213,6 +213,6 @@ void BW_backward(int Vc, int Vd)
 
 void loop()
 {
-  Serial.println("forward");
-  backward(255, 255, 255, 255);
+  FW_forward(255, 255);
+  BW_stop(0, 0);
 }
