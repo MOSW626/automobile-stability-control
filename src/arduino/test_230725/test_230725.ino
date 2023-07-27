@@ -1,5 +1,5 @@
 #include <Wire.h>
-
+int fw , bw;
 int ENA = 8;
 int ENB = 9;
 int ENC = 10;
@@ -144,8 +144,47 @@ void BackwardFW_ForwardBW(int Va, int Vb, int Vc, int Vd);
   digitalWrite(IND1, HIGH);
   digitalWrite(IND2, LOW);
 }*/
+void mc(int fb, int di,int v)
+{
+  if(fb == 1){//앞바퀴
+    if(di == 1){//정회전
+      analogWrite(ENA, v);
+      analogWrite(ENB, v);
 
-void FW_forward(int Va, int Vb)
+      digitalWrite(INA1, LOW);
+      digitalWrite(INA2, HIGH);
+      digitalWrite(INB1, HIGH);
+      digitalWrite(INB2, LOW);
+    }else{
+      analogWrite(ENA, v);
+      analogWrite(ENB, v);
+
+      digitalWrite(INA1, HIGH);
+      digitalWrite(INA2, LOW);
+      digitalWrite(INB1, LOW);
+      digitalWrite(INB2, HIGH);
+    }
+  }else{//뒷바퀴
+    if(di== 1){//정회전
+      analogWrite(ENC, v);
+      analogWrite(END, v);
+
+      digitalWrite(INC1, LOW);
+      digitalWrite(INC2, HIGH);
+      digitalWrite(IND1, HIGH);
+      digitalWrite(IND2, LOW);
+    }else{//역회전
+      analogWrite(ENC, v);
+      analogWrite(END, v);
+
+      digitalWrite(INC1, HIGH);
+      digitalWrite(INC2, LOW);
+      digitalWrite(IND1, LOW);
+      digitalWrite(IND2, HIGH);
+    }
+  }
+}
+/*void FW_forward(int Va, int Vb)
 {
   analogWrite(ENA, Va);
   analogWrite(ENB, Vb);
@@ -210,9 +249,14 @@ void BW_backward(int Vc, int Vd)
   digitalWrite(IND1, LOW);
   digitalWrite(IND2, HIGH);
 }
-
+*/
 void loop()
 {
-  FW_forward(255, 255);
-  BW_stop(0, 0);
+  int d = 1000;
+  mc(1,1,255);//바퀴, 방향, 속도
+  mc(0,0,255);
+  delay(d);
+  mc(1,0,0);
+  mc(0,0,0);
+  delay(d);
 }
