@@ -37,7 +37,7 @@ void loop(){
   //Serial.print(" | AcY = ");
   Serial.print(AcY);
   //Serial.print(" | AcZ = ");
-  Serial.println(AcZ);
+  Serial.print(AcZ);
   //Serial.print(" | Tmp = "); Serial.print(Tmp/340.00+36.53);  //equation for temperature in degrees C from datasheet
   //Serial.print(" | GyX = ");
   Serial.print(GyX);
