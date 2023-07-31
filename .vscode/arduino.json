@@ -1,5 +1,5 @@
 {
-    "port": "COM9",
-    "board": "arduino:sam:arduino_due_x",
+    "port": "COM11",
+    "board": "arduino:avr:uno",
     "sketch": "src\\arduino\\test_230725\\test_230725.ino"
 }
