@@ -5,7 +5,7 @@ from datetime import datetime
 import serial
 
 arduino_port = 'com11'
-arduino_rate = 115200
+arduino_rate = 9600
 
 def download_data():
     arduino = serial.Serial(arduino_port, arduino_rate)

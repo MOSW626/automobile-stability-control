@@ -1,2 +1,4 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+*.MP4 filter=lfs diff=lfs merge=lfs -text
+.result230731_calculate_wheel230731_바퀴각속도측정.MP4 filter=lfs diff=lfs merge=lfs -text

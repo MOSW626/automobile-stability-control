@@ -34,15 +34,20 @@ void loop(){
   GyZ=Wire.read()<<8|Wire.read();  // 0x47 (GYRO_ZOUT_H) & 0x48 (GYRO_ZOUT_L)
   //Serial.print("AcX = ");
   Serial.print(AcX);
+  Serial.print("\t");
   //Serial.print(" | AcY = ");
   Serial.print(AcY);
+  Serial.print("\t");
   //Serial.print(" | AcZ = ");
   Serial.print(AcZ);
+  Serial.print("\t");
   //Serial.print(" | Tmp = "); Serial.print(Tmp/340.00+36.53);  //equation for temperature in degrees C from datasheet
   //Serial.print(" | GyX = ");
   Serial.print(GyX);
+  Serial.print("\t");
   //Serial.print(" | GyY = ");
   Serial.print(GyY);
+  Serial.print("\t");
   //Serial.print(" | GyZ = ");
   Serial.println(GyZ);
   delay(10);
