@@ -25,6 +25,10 @@ int IND2 = 37;
 // gate sensor 선언
 const int gatePin = 7;
 
+// case variable
+int cnt=0;
+
+
 void setup_imu(int bitlate)
 {
   Wire.begin();
@@ -209,16 +213,48 @@ void setup()
 
 void loop()
 {
-  int d = 1000;
-  mc(1,1,255);//바퀴, 방향, 속도
-  mc(0,1,255);
+  switch(cnt)
+  {
+    case 2:
+    // 앞바퀴(1) : 정회전(1), 뒷바퀴(0) : 역회전(0)
+      mc(1,1,255);//바퀴, 방향, 속도
+      mc(0,0,255);
+      read_imu();
+      imu_serial();
+    //  Serial.println("case 2");
+      break;
 
-  read_imu();
-  imu_serial();
+    case 3:
+    // 앞바퀴(1) : 역회전(0), 뒷바퀴(0) : 정회전(1)
+      mc(1,0,255);//바퀴, 방향, 속도
+      mc(0,1,255);
+      read_imu();
+      imu_serial();
+    //  Serial.println("case 3");
+      break;
+
+    case 4:
+    // 앞바퀴(1) : 역회전(0), 뒷바퀴(0) : 역회전(0)
+      mc(1, 0, 255);
+      mc(0, 0, 255);
+      read_imu();
+      imu_serial();
+    //  Serial.println("case 4");
+      break;
+
+    default:
+    // 앞바퀴(1) : 정회전(1), 뒷바퀴(0) : 정회전(1)
+      mc(1,1,255);//바퀴, 방향, 속도
+      mc(0,1,255);
+      read_imu();
+      imu_serial();
+    //  Serial.println("case 1");
+      break;
+  }
 
   if(digitalRead(gatePin))
   {
-    Serial.println("Sensing!");
+    cnt = 1;
   }
 
 }
