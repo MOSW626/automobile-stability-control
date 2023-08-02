@@ -3,6 +3,7 @@
 // IMU 변수 선언
 const int MPU_addr=0x68;  // I2C address of the MPU-6050
 int16_t AcX,AcY,AcZ,Tmp,GyX,GyY,GyZ;
+int16_t offsets[] = {-2974, -1529, 1862, 91, -3, 34};
 
 // MOTOR 변수 선언
 int ENA = 8;
