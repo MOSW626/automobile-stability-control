@@ -203,7 +203,8 @@ void mc(int fb, int di,int v)
 void setup()
 {
   setup_motor();
-  setup_imu(115200);
+  setup_imu(9600);
+  setup_gate();
 }
 
 void loop()
