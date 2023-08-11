@@ -253,9 +253,9 @@ void loop()
       break;
   }
 
-  if(digitalRead(gatePin))
+  if(AcZ < 4500)
   {
-    cnt = 1;
+    cnt = 4;
   }
 
 }

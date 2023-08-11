@@ -4,7 +4,7 @@ import csv
 from datetime import datetime
 import serial
 
-arduino_port = 'com11'
+arduino_port = 'com8'
 arduino_rate = 9600
 
 def download_data():
