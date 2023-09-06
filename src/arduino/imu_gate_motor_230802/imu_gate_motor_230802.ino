@@ -10,18 +10,15 @@ int ENA = 8;
 int ENB = 9;
 int ENC = 10;
 int END = 11;
+// HIGH, LOW : UP & LOW, HIGH : DOWN
 int INA1 = 30;
 int INA2 = 31;
-// A : 1) LOW, 2) HOGH >> forward
 int INB1 = 32;
 int INB2 = 33;
-// B : 1) HIGH, 2) LOW >> forward
 int INC1 = 34;
 int INC2 = 35;
-// C : 1) LOW, 2) HOGH >> forward
 int IND1 = 36;
 int IND2 = 37;
-// D : 1) HIGH, 2) LOW >> forward
 
 // gate sensor 선언
 const int gatePin = 7;
