@@ -29,7 +29,8 @@ const int gatePin = 7;
 // case variable
 int cnt=0;
 
-int pos = 0;    // variable to store the servo position
+int theta = 0;    // variable to store the servo position
+
 
 void setup_imu(int bitlate)
 {
@@ -46,7 +47,9 @@ void setup_imu(int bitlate)
   Serial.print("\t");
   Serial.print("GyY");
   Serial.print("\t");
-  Serial.println("GyZ");
+  Serial.print("GyZ");
+  Serial.print("\t");
+  Serial.println("theta");
 }
 
 void setup_motor()
@@ -136,10 +139,12 @@ void read_imu()
   AcX=Wire.read()<<8|Wire.read();  // 0x3B (ACCEL_XOUT_H) & 0x3C (ACCEL_XOUT_L)
   AcY=Wire.read()<<8|Wire.read();  // 0x3D (ACCEL_YOUT_H) & 0x3E (ACCEL_YOUT_L)
   AcZ=Wire.read()<<8|Wire.read();  // 0x3F (ACCEL_ZOUT_H) & 0x40 (ACCEL_ZOUT_L)
+  AcZ *= -1;
   Tmp=Wire.read()<<8|Wire.read();  // 0x41 (TEMP_OUT_H) & 0x42 (TEMP_OUT_L)
   GyX=Wire.read()<<8|Wire.read();  // 0x43 (GYRO_XOUT_H) & 0x44 (GYRO_XOUT_L)
   GyY=Wire.read()<<8|Wire.read();  // 0x45 (GYRO_YOUT_H) & 0x46 (GYRO_YOUT_L)
   GyZ=Wire.read()<<8|Wire.read();  // 0x47 (GYRO_ZOUT_H) & 0x48 (GYRO_ZOUT_L)
+  theta=atan(-AcX / sqrt(pow(AcY, 2) + pow(AcZ, 2)));
 }
 
 void imu_serial()
@@ -161,7 +166,9 @@ void imu_serial()
   Serial.print(GyY);
   Serial.print("\t");
   //Serial.print(" | GyZ = ");
-  Serial.println(GyZ);
+  Serial.print(GyZ);
+  Serial.print("\t");
+  Serial.println(theta);
   delay(10);
 }
 
@@ -206,21 +213,12 @@ void mc(int fb, int di,int v)
   }
 }
 
-void tail(int start, int end, int timee)
-{
-  for (pos = start; pos <= end; pos += 1)
-  {
-    tail.write(pos);
-    delay(timee);
-  }
-}
 
 void setup() {
   tail.attach(29);
   setup_motor();
   setup_imu(9600);
   setup_gate();
-  tail.write(pos);
 }
 
 void loop() {
@@ -262,9 +260,8 @@ void loop() {
     //  Serial.println("case 1");
       break;
   }
-
-  if(AcZ < 4500)
-  {
-    tail(100, 10, 15);
-  }
+   // tail.write(90);
+   // delay(15);
+   // tail.write(120);
+   // delay(15);
 }
