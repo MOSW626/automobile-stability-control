@@ -260,8 +260,12 @@ void loop() {
     //  Serial.println("case 1");
       break;
   }
-   // tail.write(90);
-   // delay(15);
-   // tail.write(120);
-   // delay(15);
+
+  if(GyY < -150)
+  {
+    tail.write(90);
+    delay(15);
+    tail.write(120);
+    delay(15);
+  }
 }
